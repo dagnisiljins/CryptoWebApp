@@ -24,7 +24,6 @@ class CryptoController
         return new Response(
             'crypto/index',
             [
-                'message' => 'Welcome to ',
                 'cryptoCollection' => $cryptoResults,
             ]
         );
@@ -34,12 +33,23 @@ class CryptoController
         $input = $_GET['Symbol'] ?? '';
         $searchArray = explode(' ', $input);
 
+        $imageMappings = [
+            'BTC' => '/images/bitcoin_BTC.png',
+            'BNB' => '/images/bnb_BNB.png',
+            'DOGE' => '/images/dogecoin_DOGE.png',
+            'ETH' => '/images/ethereum_ETH.png',
+            'SOL' => '/images/solana_SOL.png',
+            'TRX' => '/images/tron_TRX.png',
+        ];
+
+        $imageToDisplay = $imageMappings[$input];
+
         $cryptoResults = $this->api->getCryptoCurrencyData($searchArray);
 
         return new Response(
             'crypto/search',
             [
-                'message' => 'Search results',
+                'image' => $imageToDisplay,
                 'cryptoCollection' => $cryptoResults,
             ]
         );

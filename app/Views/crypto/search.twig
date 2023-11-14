@@ -1,15 +1,33 @@
 {% include 'Partials/base.twig' %}
 
-<section class="main-content">
+
     <div class="crypto-container search-results">
+
         {% for crypto in cryptoCollection.getCryptoCurrencies() %}
             <div class="crypto-box">
-                <h2>{{ crypto.getSymbol() }}</h2>
+                {% if image %}
+                    <h1><img src="{{ image }}" alt="Crypto Image" /></h1>
+                {% endif %}
                 <p>Change: {{ crypto.getPriceChange() }}</p>
                 <p>Change (%): {{ crypto.getPriceChangePercent() }}</p>
+                <p>Weighted Avg Price: {{ crypto.getWeightedAvgPrice() }}</p>
+                <p>Previous Close Price: {{ crypto.getPrevClosePrice() }}</p>
+                <p>Last Qty: {{ crypto.getLastQty() }}</p>
+                <p>Bid Price: {{ crypto.getBidPrice() }}</p>
+                <p>Bid Qty: {{ crypto.getBidQty() }}</p>
+                <p>Ask Price: {{ crypto.getAskPrice() }}</p>
+                <p>Ask Qty: {{ crypto.getAskQty() }}</p>
+                <p>Open Price: {{ crypto.getOpenPrice() }}</p>
+                <p>High Price: {{ crypto.getHighPrice() }}</p>
+                <p>Low Price: {{ crypto.getLowPrice() }}</p>
+                <p>Volume: {{ crypto.getVolume() }}</p>
+                <p>Quote Volume: {{ crypto.getQuoteVolume() }}</p>
+                <p>Open Time: {{ crypto.getOpenTime() }}</p>
+                <p>Close Time: {{ crypto.getCloseTime() }}</p>
+                <p>Count: {{ crypto.getCount() }}</p>
             </div>
         {% endfor %}
     </div>
-</section>
+
 
 {% include 'Partials/footer.twig' %}

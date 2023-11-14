@@ -4,26 +4,57 @@
     <h1>WELCOME to Crypto App</h1>
     <p class="tagline">Here you can compare Bitcoin with other cryptocurrencies.</p>
 </div>
-<section class="main-content">
-    <div class="search-box">
-        <form method="get" action="/search" class="search-form">
-            <select name="Symbol" id="Symbol-select" class="crypto-select">
-                <option value="BTC">Bitcoin</option>
-                <option value="ETH">Ethereum</option>
-                <option value="SOL">Solana</option>
-
-            </select>
-            <button type="submit" class="search-button">Search</button>
-        </form>
+<section class="main-content-search">
+    <div class="crypto-symbols">
+        <a href="/search?Symbol=BNB"><img src="/images/bnb_BNB.png" alt="BNB" /></a>
+        <a href="/search?Symbol=DOGE"><img src="/images/dogecoin_DOGE.png" alt="Dogecoin" /></a>
+        <a href="/search?Symbol=ETH"><img src="/images/ethereum_ETH.png" alt="Ethereum" /></a>
+        <a href="/search?Symbol=SOL"><img src="/images/solana_SOL.png" alt="Solana" /></a>
+        <a href="/search?Symbol=TRX"><img src="/images/tron_TRX.png" alt="Tron" /></a>
     </div>
+
 </section>
 <section class="main-content">
     <div class="crypto-container">
         {% for crypto in cryptoCollection.getCryptoCurrencies() %}
             <div class="crypto-box">
+                {% set symbol = crypto.getSymbol() %}
+                {% set imageUrl = '' %}
+
+                {% if symbol == 'BNBBTC' %}
+                    {% set imageUrl = '/images/bnb_BNB.png' %}
+                {% elseif symbol == 'DOGEBTC' %}
+                    {% set imageUrl = '/images/dogecoin_DOGE.png' %}
+                {% elseif symbol == 'ETHBTC' %}
+                    {% set imageUrl = '/images/ethereum_ETH.png' %}
+                {% elseif symbol == 'SOLBTC' %}
+                    {% set imageUrl = '/images/solana_SOL.png' %}
+                {% elseif symbol == 'TRXBTC' %}
+                    {% set imageUrl = '/images/tron_TRX.png' %}
+                {% else %}
+                    {% set imageUrl = '/images/bitcoin_BTC.png' %}
+                {% endif %}
+
+                <img src="{{ imageUrl }}" alt="{{ symbol }}" class="crypto-symbol-image"/>
                 <h2>{{ crypto.getSymbol() }}</h2>
-                <p>Change: {{ crypto.getPriceChange() }}</p>
+                <p>Price Change: {{ crypto.getPriceChange() }}</p>
                 <p>Change (%): {{ crypto.getPriceChangePercent() }}</p>
+                <p>Weighted Avg Price: {{ crypto.getWeightedAvgPrice() }}</p>
+                <p>Previous Close Price: {{ crypto.getPrevClosePrice() }}</p>
+                <p>Last Qty: {{ crypto.getLastQty() }}</p>
+                <p>Bid Price: {{ crypto.getBidPrice() }}</p>
+                <p>Bid Qty: {{ crypto.getBidQty() }}</p>
+                <p>Ask Price: {{ crypto.getAskPrice() }}</p>
+                <p>Ask Qty: {{ crypto.getAskQty() }}</p>
+                <p>Open Price: {{ crypto.getOpenPrice() }}</p>
+                <p>High Price: {{ crypto.getHighPrice() }}</p>
+                <p>Low Price: {{ crypto.getLowPrice() }}</p>
+                <p>Volume: {{ crypto.getVolume() }}</p>
+                <p>Quote Volume: {{ crypto.getQuoteVolume() }}</p>
+                <p>Open Time: {{ crypto.getOpenTime() }}</p>
+                <p>Close Time: {{ crypto.getCloseTime() }}</p>
+                <p>Count: {{ crypto.getCount() }}</p>
+
             </div>
         {% endfor %}
     </div>
