@@ -1,184 +1,167 @@
-body, h1, h2, p {
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+.navbar {
+    background-color: rgba(106, 17, 203, 0.8); /* Semi-transparent navbar background */
+    backdrop-filter: blur(5px); /* Blur effect for background elements */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3); /* Light border for some depth */
 }
 
-h1.main-content {
-    text-align: center;
+.navbar-brand, .nav-link {
+    color: #fff !important; /* Ensuring the text color is white */
+    transition: color 0.3s ease; /* Smooth transition for hover effects */
 }
 
+.nav-link.active, .navbar-brand:hover, .nav-link:hover {
+    color: #ddd !important; /* Slightly dimmed color on hover */
+}
 
+/* Toggle button color for better visibility */
+.navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.75)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.time-nav {
+    margin-right: 20px; /* Adjust the value as needed */
+}
+
+/* Adjusting padding for the container fluid inside the navbar for better alignment */
+.container-fluid {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+/* Responsive adjustments for mobile views */
+@media (max-width: 991px) {
+    .navbar {
+        background-color: rgba(106, 17, 203, 0.95); /* Less transparency for mobile for better readability */
+    }
+}
+
+/* Apply a gradient background to the body */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
-}
-
-header {
-    background-color: #333;
+    background: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
     color: #fff;
-    padding: 20px;
-    text-align: center;
+    padding-bottom: 100px; /* To make space for footer */
 }
 
-nav {
-    background-color: #444;
-    color: #fff;
-    text-align: center;
-    padding: 10px;
-}
-
-nav a {
-    text-decoration: none;
-    color: #fff;
-    margin: 0 10px;
-}
-
-.search-box {
-    background: #f5f5f5;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.search-box form {
-    display: flex;
-    width: 100%;
-}
-
-.search-box input[type="text"],
-.search-box select,
-.search-box input[type="date"] {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-right: 10px;
-    flex: 1;
-}
-
-#country-select {
-    background: #f5f5f5;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    padding: 10px;
-    cursor: pointer;
-    width: 100%;
-}
-
-#country-select option {
-    font-size: 16px;
-}
-
-.search-box button {
-    background: #333;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-.search-box button:hover {
-    background: #222;
-}
-
+/* Style the main content area */
 .main-content {
-    max-width: 1200px;
-    margin: 20px auto;
+    max-width: 800px;
+    margin: 40px auto;
     padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.news-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-.news-box {
-    flex: 0 0 calc(30% - 20px);
-    margin: 10px 0;
-    padding: 10px;
-    background-color: #fff;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-
-.news-box a {
-    text-decoration: none;
-    color: #333;
-}
-
-.news-box img {
-    max-width: 100%;
-    height: auto;
-}
-
-.news-box h2 {
-    margin: 10px 0;
-}
-
-footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 10px;
-}
-
-.weather {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: 2px solid #333;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
     border-radius: 10px;
-    padding: 20px;
-    background-color: #f0f0f0;
-    margin: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
 }
 
-.weather p {
-    font-size: 18px;
-    margin: 10px 0;
+.heading-container {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #fff; /* For light text color */
 }
 
-.weather form {
+.heading-container h1 {
+    font-size: 3.5rem; /* Large, readable size */
+    margin-bottom: 0.5rem; /* Space between h1 and tagline */
+}
+
+.heading-container .tagline {
+    font-size: 1.2rem; /* Smaller than h1 but still significant */
+    font-weight: 300; /* Lighter font-weight */
+    opacity: 0.9; /* Slightly see-through for a subtle effect */
+}
+
+/* Search box styling */
+.search-box {
+    margin-bottom: 30px;
+}
+
+.search-form {
     display: flex;
-    align-items: center;
     justify-content: center;
-    margin-top: 20px;
+    align-items: center;
+    gap: 10px; /* creates space between the elements */
 }
 
-.weather input[type="text"] {
-    width: 250px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.weather button {
-    background-color: #333;
-    color: #fff;
+.crypto-select, .search-button {
+    padding: 10px 15px;
     border: none;
     border-radius: 5px;
-    padding: 10px 20px;
-    margin-left: 10px;
+    font-size: 16px;
+    outline: none;
+}
+
+.crypto-select {
+    flex-grow: 1; /* allows the select to grow */
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
+.search-button {
+    background-color: #6a11cb;
+    color: white;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-.weather .searched-weather {
-    margin-top: 20px;
-    border-top: 1px solid #ccc;
-    padding-top: 20px;
+.search-button:hover {
+    background-color: #2575fc;
 }
 
-.symbol {
-    font-size: 136px;
+/* Crypto container and boxes */
+.crypto-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 
+.crypto-box {
+    flex: 1; /* allows boxes to grow */
+    min-width: 200px; /* minimum width for smaller devices */
+    margin: 10px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Footer styling */
+footer {
+    background-color: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .crypto-container {
+        flex-direction: column;
+    }
+
+    .crypto-box {
+        width: 90%;
+        margin: 10px auto;
+    }
+}
 
 

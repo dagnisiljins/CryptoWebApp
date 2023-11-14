@@ -1,25 +1,32 @@
 {% include 'Partials/base.twig' %}
-
+<div class="heading-container">
+    <br>
+    <h1>WELCOME to Crypto App</h1>
+    <p class="tagline">Here you can compare Bitcoin with other cryptocurrencies.</p>
+</div>
 <section class="main-content">
     <div class="search-box">
-        <form method="get" action="/search">
-            <select name="Symbol" id="Symbol-select">
+        <form method="get" action="/search" class="search-form">
+            <select name="Symbol" id="Symbol-select" class="crypto-select">
+                <option value="BTC">Bitcoin</option>
                 <option value="ETH">Ethereum</option>
-                <option value="SOL">Solan</option>
+                <option value="SOL">Solana</option>
+
             </select>
-            <button type="submit">Search</button>
+            <button type="submit" class="search-button">Search</button>
         </form>
     </div>
-
-    <h1 class="main-content">{{ message }}</h1>
-    <div class="news-container">
+</section>
+<section class="main-content">
+    <div class="crypto-container">
         {% for crypto in cryptoCollection.getCryptoCurrencies() %}
-            <div class="news-box">
+            <div class="crypto-box">
                 <h2>{{ crypto.getSymbol() }}</h2>
-                <p>{{ crypto.getPriceChange() }}</p>
-                <p>{{ crypto.getPriceChangePercent() }}</p>
+                <p>Change: {{ crypto.getPriceChange() }}</p>
+                <p>Change (%): {{ crypto.getPriceChangePercent() }}</p>
             </div>
         {% endfor %}
     </div>
 </section>
+
 {% include 'Partials/footer.twig' %}

@@ -16,7 +16,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 $loader = new FilesystemLoader(__DIR__ . '/../app/Views/');
 $twig = new Environment($loader);
 
-$currentTime = Carbon::now('Europe/Riga')->format('Y-m-d | H:i');
+$currentTime = Carbon::now('Europe/Riga')->format('Y-m-d ');
 $twig->addGlobal('globalTime', $currentTime);
 
 

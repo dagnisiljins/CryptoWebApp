@@ -24,7 +24,7 @@ class CryptoController
         return new Response(
             'crypto/index',
             [
-                'message' => 'Hello',
+                'message' => 'Welcome to ',
                 'cryptoCollection' => $cryptoResults,
             ]
         );
