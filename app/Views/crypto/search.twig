@@ -1,0 +1,15 @@
+{% include 'Partials/base.twig' %}
+
+<section class="main-content">
+    <h1 class="main-content">{{ message }}</h1>
+    <div class="news-container">
+        {% for crypto in cryptoCollection.getCryptoCurrencies() %}
+            <div class="news-box">
+                <h2>{{ crypto.getSymbol() }}</h2>
+                <p>{{ crypto.getPriceChange() }}</p>
+                <p>{{ crypto.getPriceChangePercent() }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+{% include 'Partials/footer.twig' %}

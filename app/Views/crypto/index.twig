@@ -1,0 +1,25 @@
+{% include 'Partials/base.twig' %}
+
+<section class="main-content">
+    <div class="search-box">
+        <form method="get" action="/search">
+            <select name="Symbol" id="Symbol-select">
+                <option value="ETH">Ethereum</option>
+                <option value="SOL">Solan</option>
+            </select>
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+    <h1 class="main-content">{{ message }}</h1>
+    <div class="news-container">
+        {% for crypto in cryptoCollection.getCryptoCurrencies() %}
+            <div class="news-box">
+                <h2>{{ crypto.getSymbol() }}</h2>
+                <p>{{ crypto.getPriceChange() }}</p>
+                <p>{{ crypto.getPriceChangePercent() }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+{% include 'Partials/footer.twig' %}
